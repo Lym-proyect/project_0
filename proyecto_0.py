@@ -4,8 +4,8 @@ import sys
 import os
 
 check = False
-name = "ejemploFull.txt"
-archive = open(name, "r")
+archivo = "ejemploFull.txt"
+new_archive = "arreglo.txt"
 
 full_tokens = []
 
@@ -47,27 +47,19 @@ reserved_terminal = {
 
 full_tokens = list(reserved_non_terminal.values()) + list(reserved_terminal.values())
 
+def remove(name, archivo_salida):
+        with open(name, "r") as entrada:
+            lineas = entrada.readlines()
+        with open(archivo_salida, "w") as salida:
+            for linea in lineas:
+                linea_sin_espacios = linea.replace(" ", "").replace("\n","").replace("\t","")
+                salida.write(linea_sin_espacios)
+
 def values(token):
     variable = r"[a-zA-Z_][a-zA-Z0-9]*"
     return variable
 
-def remove(archive: list):
-    
-    for caracter in archive:
-        
-        if caracter == "\n":
-            archive.remove(caracter)
-            
-        if caracter == "\t":
-            archive.remove(caracter)
-        
-        if caracter == " ":
-            archive.remove(caracter)
-    
-    print(archive)
-
 def token(archivo):
-    archivo = remove(archivo)
     tokens = []
     for posicion in range(len(archivo)):
         for caracter in archivo:
@@ -81,5 +73,5 @@ def verificar(tokens: list):
     if tokens.size() > 0:
         check = True
     
-    print(check)  
-    
+remove(archivo,new_archive)
+
