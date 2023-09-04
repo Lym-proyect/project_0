@@ -189,11 +189,52 @@ def token(archivo):
             posicion += 1
             if caracter == "jump" and posicion:
                 tokens.append("espacio")
+
+def variable(cadena):
+    pos = 0
+    variable1 = ""
+    for caracter in cadena:
+        if pos >= 6 :
+            variable1 += caracter
+            if caracter == "d":
+                break
+        pos += 1
+    variable1 = variable1.replace("d","")
+    variable1 = variable1[:-1]
+    return variable1
+
+def variable2(cadena, variable1):
+    pos = 0
+    variable2 = ""
+    tamaño = len(variable1) + 12
+    for caracter in cadena:
+        if pos > tamaño:
+            variable2 += caracter
+            if caracter == "d":
+                break
+        pos += 1
+    variable2 = variable2.replace("d","")
+    variable2 = variable2[:-1]
+    return variable2
+
+def variable3(cadena, variable1, variable2):
+    pos = 0
+    variable3 = ""
+    tamaño = len(variable1) + len(variable2) + 19
+    for caracter in cadena:
+        if pos > tamaño:
+            variable3 += caracter
+            if caracter == "d":
+                break
+        pos += 1
+    variable3 = variable3.replace("d","")
+    variable3 = variable3[:-1]
+    return variable3
             
-        
-def verificar(tokens: list):
+def verificar(tokens: list): 
     
     if tokens.size() > 0:
         check = True
-""" 
+    
+remove(archivo,new_archive)
 
