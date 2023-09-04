@@ -97,7 +97,7 @@ def variable2(cadena, variable1):
 def variable3(cadena, variable1, variable2):
     pos = 0
     variable3 = ""
-    tamaño = len(variable1) + len(variable2) + 18
+    tamaño = len(variable1) + len(variable2) + 19
     for caracter in cadena:
         if pos > tamaño:
             variable3 += caracter
@@ -106,7 +106,6 @@ def variable3(cadena, variable1, variable2):
         pos += 1
     variable3 = variable3.replace("d","")
     variable3 = variable3[:-1]
-    variable3 = variable3[1:]
     return variable3
             
 def verificar(tokens: list): 
@@ -121,3 +120,4 @@ arreglo.close()
 variable_1 = variable(cadena)
 variable_2= variable2(cadena,variable_1)
 variable_3 = variable3(cadena, variable_1, variable_2)
+
