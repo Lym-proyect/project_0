@@ -237,4 +237,25 @@ def verificar(tokens: list):
         check = True
     
 remove(archivo,new_archive)
+new_archive = open("arreglo.txt", "r")
+cadena = new_archive.read()
+new_archive.close()
 """
+working = True
+
+while working:
+    print("\nBienvenido al analizador léxico de nuestro lenguaje de programación ")
+    print("\n1. Usar analizador léxico")
+    print("2. Salir")
+    opcion = input("\nIngrese una opción: ")
+    
+    if int(opcion) == 1:
+        archivo = input("Ingrese el nombre del archivo txt: ")
+        
+    elif int(opcion) == 2:
+        working = False
+        print("\nGracias por utilizar el programa")
+        
+        
+        
+    
