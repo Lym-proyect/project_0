@@ -154,6 +154,7 @@ while working:
             if not token:
                 break  
             print(token)
+        leer.close()
 
     elif int(opcion) == 2:
         working = False
