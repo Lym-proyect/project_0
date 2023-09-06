@@ -112,8 +112,20 @@ def t_error(t):
 
 
 analizador_lexico = lex.lex()
+new_archive = "arreglo.txt"
 
 working = True
+
+def remove(name, archivo_salida):
+        with open(name, "r") as entrada:
+            lineas = entrada.readlines()
+        with open(archivo_salida, "w") as salida:
+            for linea in lineas:
+                linea_sin_espacios = linea.replace("\n","").lower()
+                salida.write(linea_sin_espacios)
+
+with open(new_archive, 'r') as archivo:
+    contenido = archivo.read()
 
 while working:
     print("\nBienvenido al analizador léxico de nuestro lenguaje de programación ")
@@ -123,8 +135,9 @@ while working:
     
     if int(opcion) == 1:
         archivo = input("Ingrese el nombre del archivo txt: ")
-        entrada = open(archivo, "r")
-        cadena = entrada.read().lower()
+        remove(archivo, new_archive)
+        leer = open("arreglo.txt", "r")
+        cadena = leer.read().lower()
         analizador_lexico.input(cadena)
         while True:
             token = analizador_lexico.token()
