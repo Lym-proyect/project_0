@@ -5,7 +5,7 @@ import sys
 import os
 
 
-tokens = ['JUMP', 'WALK','DEFVAR','DEFPROC','LEAP','TURN','DROP','TURNTO','GET','GRAB','LETGO','NOP','IF','FACING','CAN','NOT','OBRACKET', "ELSE", "SEMICOLON", "ELIF", "WHILE", "REPEAT", "TIMES", "COMA", "EBRECKET"]
+tokens = ['JUMP', 'WALK','DEFVAR','DEFPROC','LEAP','TURN','DROP','TURNTO','GET','GRAB','LETGO','NOP','IF','FACING','CAN','NOT','OBRACKET', "ELSE", "SEMICOLON", "ELIF", "WHILE", "REPEAT", "COMA", "EBRACKET","VARIABLE",'CLOSE','OPEN']
 
 def t_JUMP(t):
 	r'jump\s*\(\s*(.*?)\s*\)'
@@ -38,12 +38,15 @@ def t_DEFPROC(t):
 def t_TURNTO(t):
 	r'turnto\s*\(\s*(.*?)\s*\)'
 	return t
+
 def t_GET(t):
 	r'get\s*\(\s*(.*?)\s*\)'
 	return t
+
 def t_GRAB(t):
 	r'grab\s*\(\s*(.*?)\s*\)'
 	return t
+
 def t_LETGO(t):
 	r'letgo\s*\(\s*(.*?)\s*\)'
 	return t
@@ -65,7 +68,7 @@ def t_NOT(t):
 	return t
 
 def t_IF(t):
-	r'if+t_NOT|t_CAN|t_FACING+\('
+	r'if'
 	return t
 
 def t_OBRACKET(t):
@@ -73,27 +76,23 @@ def t_OBRACKET(t):
 	return t
 
 def t_ELSE(t):
-    r"'\belse\b'"
+    r'else'
     return t
 
 def t_SEMICOLON(t):
-    r"'\;'"
+    r'\;'
     return t
 
 def t_ELIF(t):
-    r"'\belif\b'"
+    r'elif'
     return t    
 
 def t_WHILE(t):
-    r"'\bwhile\b'"
+    r'while'
     return t
 
 def t_REPEAT(t):
-    r"'\brepeat\b'"
-    return t
-
-def t_TIMES(t):
-    r"'\btimes\b'"
+    r'repeat\s+([a-zA-Z0-9_][a-zA-Z0-9_])*\s+times'
     return t
 
 def t_COMA(t):
@@ -104,6 +103,17 @@ def t_EBRACKET(t):
     r'\}'
     return t 
 
+def t_CLOSE(t):
+    r'\)'
+    return t 
+
+def t_OPEN(t):
+    r'\('
+    return t 
+
+def t_VARIABLE(t):
+    r'([a-zA-Z_][a-zA-Z0-9_]*)\s*\(\s*(.*?)\s*\)'
+    return t 
 t_ignore = ' \t\n'
 
 def t_error(t):
@@ -133,7 +143,7 @@ while working:
     print("2. Salir")
     opcion = input("\nIngrese una opción: ")
     
-    if int(opcion) == 1:
+    if int(opcion) == 1: 
         archivo = input("Ingrese el nombre del archivo txt: ")
         remove(archivo, new_archive)
         leer = open("arreglo.txt", "r")
@@ -144,10 +154,10 @@ while working:
             if not token:
                 break  
             print(token)
-        
+
     elif int(opcion) == 2:
         working = False
-        print("\nGracias por utilizar el programa")
+        print("\nGracias por utilizar el programa") 
 
  
 
